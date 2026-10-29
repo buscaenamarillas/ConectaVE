@@ -1,0 +1,1539 @@
+```html
+<!DOCTYPE html>
+<html```html
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaVe | Directorio & Mini Web para Empresas y Emprendedores</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        },
+                        amber: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+        }
+        .vip-glow {
+            box-shadow: 0 0 20px -3px rgba(16, 185, 129, 0.3), 0 0 10px -2px rgba(245, 158, 11, 0.2);
+            border: 2px solid #10b981;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen selection:bg-brand-500 selection:text-white">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="glass-nav border-b border-slate-200/80 sticky top-0 z-40 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer group" onclick="navigateTo('directory')">
+                    <div class="w-12 h-12 bg-gradient-to-br from-brand-500 to-brand-700 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform duration-200">
+                        <i data-lucide="globe-2" class="w-7 h-7"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black tracking-tight text-slate-900">Conecta<span class="text-brand-600">Ve</span></span>
+                        <p class="text-[11px] text-slate-500 font-semibold tracking-wide uppercase hidden sm:block">Venezuela Empresarial</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="flex items-center space-x-1 sm:space-x-2">
+                    <button id="nav-directory" onclick="navigateTo('directory')" class="px-3.5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-brand-700 bg-brand-50/80 flex items-center gap-2">
+                        <i data-lucide="store" class="w-4 h-4"></i> Directorio
+                    </button>
+                    <button id="nav-pricing" onclick="navigateTo('pricing')" class="px-3.5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-slate-600 hover:text-brand-600 hover:bg-slate-100 flex items-center gap-2">
+                        <i data-lucide="zap" class="w-4 h-4"></i> Planes & Mini Web
+                    </button>
+                    <button id="nav-admin" onclick="navigateTo('admin')" class="px-3.5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-slate-600 hover:text-brand-600 hover:bg-slate-100 flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i> Panel Admin
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow">
+        
+        <!-- SECTION 1: DIRECTORY & SEARCH VIEW -->
+        <section id="section-directory" class="block animate-fadeIn">
+            <!-- Hero Banner -->
+            <div class="relative bg-gradient-to-br from-slate-950 via-brand-950 to-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#10b98118,transparent)] pointer-events-none"></div>
+                <div class="max-w-4xl mx-auto text-center space-y-5 relative z-10">
+                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-brand-500/20 border border-brand-500/40 rounded-full text-xs font-bold text-brand-300 tracking-wide uppercase backdrop-blur-sm">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-400"></i> Red Nacional & Estadal de Venezuela
+                    </span>
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                        Descubre Empresas y Explora sus <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-400 to-emerald-200">Mini Páginas Web</span>
+                    </h1>
+                    <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-normal leading-relaxed">
+                        Conecta directamente con tiendas, servicios y negocios locales en Venezuela. Consulta catálogos, fotos, ubicación y WhatsApp oficial en un clic.
+                    </p>
+
+                    <!-- Search & Filter Card -->
+                    <div class="bg-white p-4 sm:p-6 rounded-3xl shadow-2xl text-slate-800 text-left space-y-4 border border-slate-100/80 mt-8 backdrop-blur-md">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                            <!-- Search Input -->
+                            <div class="relative md:col-span-2">
+                                <i data-lucide="search" class="w-5 h-5 absolute left-3.5 top-3.5 text-slate-400"></i>
+                                <input type="text" id="filter-keyword" placeholder="Buscar por empresa, producto o servicio..." oninput="renderListings()" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 font-medium">
+                            </div>
+
+                            <!-- Scope / Coverage -->
+                            <div class="relative">
+                                <i data-lucide="globe" class="w-5 h-5 absolute left-3.5 top-3.5 text-slate-400"></i>
+                                <select id="filter-scope" onchange="renderListings()" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-700 font-medium appearance-none">
+                                    <option value="todos">Cualquier Cobertura</option>
+                                    <option value="Nacional">Cobertura Nacional</option>
+                                    <option value="Estadal">Cobertura Estadal</option>
+                                </select>
+                            </div>
+
+                            <!-- State Selector -->
+                            <div class="relative">
+                                <i data-lucide="map-pin" class="w-5 h-5 absolute left-3.5 top-3.5 text-slate-400"></i>
+                                <select id="filter-state" onchange="renderListings()" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-700 font-medium appearance-none">
+                                    <option value="todos">Todos los Estados</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Secondary Filters -->
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-2 border-t border-slate-100 gap-3">
+                            <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs no-scrollbar w-full sm:w-auto" id="category-pills">
+                                <!-- Dynamic Category Pills -->
+                            </div>
+                            
+                            <select id="filter-tier" onchange="renderListings()" class="px-3 py-1.5 bg-slate-100 border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:outline-none">
+                                <option value="todos">Todos los Planes</option>
+                                <option value="VIP">Solo VIP Gold</option>
+                                <option value="Destacado">Solo Destacados</option>
+                                <option value="Básico">Solo Básicos</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Directory Grid Container -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 pb-4 border-b border-slate-200 gap-3">
+                    <div>
+                        <h2 class="text-2xl font-black text-slate-900 tracking-tight">Directorio Nacional</h2>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5" id="results-count">Cargando empresas...</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-semibold text-slate-400">Niveles:</span>
+                        <span class="px-2.5 py-1 bg-amber-100 text-amber-800 text-xs font-black rounded-lg border border-amber-200 flex items-center gap-1"><i data-lucide="crown" class="w-3 h-3"></i> VIP Gold</span>
+                        <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-lg border border-emerald-200 flex items-center gap-1"><i data-lucide="star" class="w-3 h-3"></i> Destacado</span>
+                    </div>
+                </div>
+
+                <!-- Dynamic Grid -->
+                <div id="listings-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Cards injected by JS -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="hidden text-center py-20 bg-white rounded-3xl border border-dashed border-slate-300 shadow-sm max-w-2xl mx-auto my-8">
+                    <div class="w-20 h-20 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="search-x" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800">No encontramos coincidencias</h3>
+                    <p class="text-slate-500 text-sm max-w-md mx-auto mt-2">Prueba cambiando las palabras clave o seleccionando otro estado en el buscador superior.</p>
+                    <button onclick="resetFilters()" class="mt-5 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-brand-600/20">
+                        Restablecer Filtros
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: PRICING & MINI-WEB SHOWCASE -->
+        <section id="section-pricing" class="hidden py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto animate-fadeIn">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="px-4 py-1.5 bg-brand-100 text-brand-800 rounded-full text-xs font-black uppercase tracking-wider">
+                    Planes Comerciales ConectaVe
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black text-slate-900 mt-4 tracking-tight">Tu Mini Página Web Integrada</h2>
+                <p class="text-slate-600 mt-3 text-sm sm:text-base leading-relaxed">
+                    No pagues costosos dominios ni hosting. En ConectaVe obtienes tu propia Mini Web con catálogo interactivo de productos, ubicación y contacto directo a WhatsApp.
+                </p>
+            </div>
+
+            <!-- Pricing Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                <!-- Plan Básico -->
+                <div class="bg-white rounded-3xl border border-slate-200 p-7 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Ficha Estadal</span>
+                            <i data-lucide="building" class="w-6 h-6 text-slate-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-900">Plan Básico</h3>
+                        <p class="text-slate-500 text-xs mt-1">Presencia digital para emprendimientos nacientes.</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-black text-slate-900">$10</span>
+                            <span class="text-slate-500 text-sm font-semibold"> / mes</span>
+                        </div>
+                        <ul class="space-y-3.5 text-xs font-medium text-slate-600 mb-8">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Presencia en 1 Estado seleccionado
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Mini Web con datos básicos y logo
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Catálogo de hasta 1 Producto/Servicio
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Botón directo a WhatsApp
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="openHireModal('Básico ($10/mes)')" class="w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl transition text-xs flex items-center justify-center gap-2 shadow-md">
+                        Contratar Plan Básico
+                    </button>
+                </div>
+
+                <!-- Plan Destacado -->
+                <div class="bg-white rounded-3xl border-2 border-brand-500 p-7 flex flex-col justify-between shadow-2xl relative transform md:-translate-y-3">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-brand-600 to-brand-500 text-white text-[11px] font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+                        El Más Vendido
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-brand-100 text-brand-800 text-xs font-bold rounded-lg">Estadal + Cobertura Amplia</span>
+                            <i data-lucide="star" class="w-6 h-6 text-brand-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-900">Plan Destacado</h3>
+                        <p class="text-slate-500 text-xs mt-1">Gana visibilidad superior frente a tu competencia.</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-black text-slate-900">$25</span>
+                            <span class="text-slate-500 text-sm font-semibold"> / mes</span>
+                        </div>
+                        <ul class="space-y-3.5 text-xs font-medium text-slate-600 mb-8">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Cobertura Estadal + Regional
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Insignia Verde "Destacado"
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Mini Web con Catálogo de 3 Productos
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Prioridad en resultados de búsqueda
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Links a Instagram y Google Maps
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="openHireModal('Destacado ($25/mes)')" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-2xl transition text-xs shadow-lg shadow-brand-600/30 flex items-center justify-center gap-2">
+                        Contratar Plan Destacado
+                    </button>
+                </div>
+
+                <!-- Plan VIP Gold -->
+                <div class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white rounded-3xl border border-slate-800 p-7 flex flex-col justify-between shadow-2xl relative">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-amber-400 text-amber-950 text-xs font-black rounded-lg uppercase">Prioridad Absoluta</span>
+                            <i data-lucide="crown" class="w-6 h-6 text-amber-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-white">Plan VIP Gold</h3>
+                        <p class="text-slate-400 text-xs mt-1">Presencia ilimitada para marcas líderes a nivel nacional.</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-black text-amber-400">$50</span>
+                            <span class="text-slate-400 text-sm font-semibold"> / mes</span>
+                        </div>
+                        <ul class="space-y-3.5 text-xs font-medium text-slate-300 mb-8">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-amber-400 flex-shrink-0"></i> Cobertura Nacional T lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaVe | Directorio & Mini Web para Empresas y Emprendedores</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        },
+                        amber: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+        }
+        .vip-glow {
+            box-shadow: 0 0 20px -3px rgba(16, 185, 129, 0.3), 0 0 10px -2px rgba(245, 158, 11, 0.2);
+            border: 2px solid #10b981;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen selection:bg-brand-500 selection:text-white">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="glass-nav border-b border-slate-200/80 sticky top-0 z-40 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer group" onclick="navigateTo('directory')">
+                    <div class="w-12 h-12 bg-gradient-to-br from-brand-500 to-brand-700 text-white rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform duration-200">
+                        <i data-lucide="globe-2" class="w-7 h-7"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-black tracking-tight text-slate-900">Conecta<span class="text-brand-600">Ve</span></span>
+                        <p class="text-[11px] text-slate-500 font-semibold tracking-wide uppercase hidden sm:block">Venezuela Empresarial</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="flex items-center space-x-1 sm:space-x-2">
+                    <button id="nav-directory" onclick="navigateTo('directory')" class="px-3.5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-brand-700 bg-brand-50/80 flex items-center gap-2">
+                        <i data-lucide="store" class="w-4 h-4"></i> Directorio
+                    </button>
+                    <button id="nav-pricing" onclick="navigateTo('pricing')" class="px-3.5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-slate-600 hover:text-brand-600 hover:bg-slate-100 flex items-center gap-2">
+                        <i data-lucide="zap" class="w-4 h-4"></i> Planes & Mini Web
+                    </button>
+                    <button id="nav-admin" onclick="navigateTo('admin')" class="px-3.5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-slate-600 hover:text-brand-600 hover:bg-slate-100 flex items-center gap-2">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i> Panel Admin
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow">
+        
+        <!-- SECTION 1: DIRECTORY & SEARCH VIEW -->
+        <section id="section-directory" class="block animate-fadeIn">
+            <!-- Hero Banner -->
+            <div class="relative bg-gradient-to-br from-slate-950 via-brand-950 to-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#10b98118,transparent)] pointer-events-none"></div>
+                <div class="max-w-4xl mx-auto text-center space-y-5 relative z-10">
+                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-brand-500/20 border border-brand-500/40 rounded-full text-xs font-bold text-brand-300 tracking-wide uppercase backdrop-blur-sm">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-400"></i> Red Nacional & Estadal de Venezuela
+                    </span>
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+                        Descubre Empresas y Explora sus <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-400 to-emerald-200">Mini Páginas Web</span>
+                    </h1>
+                    <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-normal leading-relaxed">
+                        Conecta directamente con tiendas, servicios y negocios locales en Venezuela. Consulta catálogos, fotos, ubicación y WhatsApp oficial en un clic.
+                    </p>
+
+                    <!-- Search & Filter Card -->
+                    <div class="bg-white p-4 sm:p-6 rounded-3xl shadow-2xl text-slate-800 text-left space-y-4 border border-slate-100/80 mt-8 backdrop-blur-md">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                            <!-- Search Input -->
+                            <div class="relative md:col-span-2">
+                                <i data-lucide="search" class="w-5 h-5 absolute left-3.5 top-3.5 text-slate-400"></i>
+                                <input type="text" id="filter-keyword" placeholder="Buscar por empresa, producto o servicio..." oninput="renderListings()" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 font-medium">
+                            </div>
+
+                            <!-- Scope / Coverage -->
+                            <div class="relative">
+                                <i data-lucide="globe" class="w-5 h-5 absolute left-3.5 top-3.5 text-slate-400"></i>
+                                <select id="filter-scope" onchange="renderListings()" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-700 font-medium appearance-none">
+                                    <option value="todos">Cualquier Cobertura</option>
+                                    <option value="Nacional">Cobertura Nacional</option>
+                                    <option value="Estadal">Cobertura Estadal</option>
+                                </select>
+                            </div>
+
+                            <!-- State Selector -->
+                            <div class="relative">
+                                <i data-lucide="map-pin" class="w-5 h-5 absolute left-3.5 top-3.5 text-slate-400"></i>
+                                <select id="filter-state" onchange="renderListings()" class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-700 font-medium appearance-none">
+                                    <option value="todos">Todos los Estados</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Secondary Filters -->
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-2 border-t border-slate-100 gap-3">
+                            <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs no-scrollbar w-full sm:w-auto" id="category-pills">
+                                <!-- Dynamic Category Pills -->
+                            </div>
+                            
+                            <select id="filter-tier" onchange="renderListings()" class="px-3 py-1.5 bg-slate-100 border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:outline-none">
+                                <option value="todos">Todos los Planes</option>
+                                <option value="VIP">Solo VIP Gold</option>
+                                <option value="Destacado">Solo Destacados</option>
+                                <option value="Básico">Solo Básicos</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Directory Grid Container -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 pb-4 border-b border-slate-200 gap-3">
+                    <div>
+                        <h2 class="text-2xl font-black text-slate-900 tracking-tight">Directorio Nacional</h2>
+                        <p class="text-xs text-slate-500 font-medium mt-0.5" id="results-count">Cargando empresas...</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-semibold text-slate-400">Niveles:</span>
+                        <span class="px-2.5 py-1 bg-amber-100 text-amber-800 text-xs font-black rounded-lg border border-amber-200 flex items-center gap-1"><i data-lucide="crown" class="w-3 h-3"></i> VIP Gold</span>
+                        <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-lg border border-emerald-200 flex items-center gap-1"><i data-lucide="star" class="w-3 h-3"></i> Destacado</span>
+                    </div>
+                </div>
+
+                <!-- Dynamic Grid -->
+                <div id="listings-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Cards injected by JS -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="hidden text-center py-20 bg-white rounded-3xl border border-dashed border-slate-300 shadow-sm max-w-2xl mx-auto my-8">
+                    <div class="w-20 h-20 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="search-x" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-800">No encontramos coincidencias</h3>
+                    <p class="text-slate-500 text-sm max-w-md mx-auto mt-2">Prueba cambiando las palabras clave o seleccionando otro estado en el buscador superior.</p>
+                    <button onclick="resetFilters()" class="mt-5 px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl transition shadow-md shadow-brand-600/20">
+                        Restablecer Filtros
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: PRICING & MINI-WEB SHOWCASE -->
+        <section id="section-pricing" class="hidden py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto animate-fadeIn">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="px-4 py-1.5 bg-brand-100 text-brand-800 rounded-full text-xs font-black uppercase tracking-wider">
+                    Planes Comerciales ConectaVe
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black text-slate-900 mt-4 tracking-tight">Tu Mini Página Web Integrada</h2>
+                <p class="text-slate-600 mt-3 text-sm sm:text-base leading-relaxed">
+                    No pagues costosos dominios ni hosting. En ConectaVe obtienes tu propia Mini Web con catálogo interactivo de productos, ubicación y contacto directo a WhatsApp.
+                </p>
+            </div>
+
+            <!-- Pricing Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                <!-- Plan Básico -->
+                <div class="bg-white rounded-3xl border border-slate-200 p-7 flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg">Ficha Estadal</span>
+                            <i data-lucide="building" class="w-6 h-6 text-slate-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-900">Plan Básico</h3>
+                        <p class="text-slate-500 text-xs mt-1">Presencia digital para emprendimientos nacientes.</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-black text-slate-900">$10</span>
+                            <span class="text-slate-500 text-sm font-semibold"> / mes</span>
+                        </div>
+                        <ul class="space-y-3.5 text-xs font-medium text-slate-600 mb-8">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Presencia en 1 Estado seleccionado
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Mini Web con datos básicos y logo
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Catálogo de hasta 1 Producto/Servicio
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Botón directo a WhatsApp
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="openHireModal('Básico ($10/mes)')" class="w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl transition text-xs flex items-center justify-center gap-2 shadow-md">
+                        Contratar Plan Básico
+                    </button>
+                </div>
+
+                <!-- Plan Destacado -->
+                <div class="bg-white rounded-3xl border-2 border-brand-500 p-7 flex flex-col justify-between shadow-2xl relative transform md:-translate-y-3">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-brand-600 to-brand-500 text-white text-[11px] font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+                        El Más Vendido
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-brand-100 text-brand-800 text-xs font-bold rounded-lg">Estadal + Cobertura Amplia</span>
+                            <i data-lucide="star" class="w-6 h-6 text-brand-600"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-900">Plan Destacado</h3>
+                        <p class="text-slate-500 text-xs mt-1">Gana visibilidad superior frente a tu competencia.</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-black text-slate-900">$25</span>
+                            <span class="text-slate-500 text-sm font-semibold"> / mes</span>
+                        </div>
+                        <ul class="space-y-3.5 text-xs font-medium text-slate-600 mb-8">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Cobertura Estadal + Regional
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Insignia Verde "Destacado"
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Mini Web con Catálogo de 3 Productos
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Prioridad en resultados de búsqueda
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-brand-600 flex-shrink-0"></i> Links a Instagram y Google Maps
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="openHireModal('Destacado ($25/mes)')" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-2xl transition text-xs shadow-lg shadow-brand-600/30 flex items-center justify-center gap-2">
+                        Contratar Plan Destacado
+                    </button>
+                </div>
+
+                <!-- Plan VIP Gold -->
+                <div class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white rounded-3xl border border-slate-800 p-7 flex flex-col justify-between shadow-2xl relative">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-amber-400 text-amber-950 text-xs font-black rounded-lg uppercase">Prioridad Absoluta</span>
+                            <i data-lucide="crown" class="w-6 h-6 text-amber-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-white">Plan VIP Gold</h3>
+                        <p class="text-slate-400 text-xs mt-1">Presencia ilimitada para marcas líderes a nivel nacional.</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-black text-amber-400">$50</span>
+                            <span class="text-slate-400 text-sm font-semibold"> / mes</span>
+                        </div>
+                        <ul class="space-y-3.5 text-xs font-medium text-slate-300 mb-8">
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-amber-400 flex-shrink-0"></i> Cobertura Nacional Total en los 24 Estados
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-amber-400 flex-shrink-0"></i> Primeras posiciones fijas en portada
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-amber-400 flex-shrink-0"></i> Mini Web VIP Completa (hasta 6 productos)
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-amber-400 flex-shrink-0"></i> Marco VIP Dorado Resplandeciente
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-amber-400 flex-shrink-0"></i> Verificación oficial garantizada
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="openHireModal('VIP Gold ($50/mes)')" class="w-full py-3.5 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black rounded-2xl transition text-xs flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
+                        Contratar Plan VIP Gold
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: FULL PROTECTED ADMIN PANEL -->
+        <section id="section-admin" class="hidden py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto animate-fadeIn">
+            <!-- Admin Login Overlay -->
+            <div id="admin-login-card" class="max-w-md mx-auto bg-white p-8 sm:p-10 rounded-3xl shadow-2xl border border-slate-100 text-center">
+                <div class="w-16 h-16 bg-brand-100 text-brand-700 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-inner">
+                    <i data-lucide="lock" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 tracking-tight">Acceso Administrador</h2>
+                <p class="text-slate-500 text-xs mt-1.5 mb-6">Ingresa tu clave de propietario para gestionar clientes, cambiar estados o pausar publicaciones.</p>
+
+                <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+                    <div>
+                        <input type="password" id="admin-pin-input" placeholder="PIN de Seguridad (Demo: 1234)" class="w-full text-center tracking-widest text-xl py-3.5 px-4 bg-slate-50 border border-slate-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-500 font-extrabold text-slate-800" required>
+                    </div>
+                    <button type="submit" class="w-full py-3.5 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-2xl transition text-xs shadow-lg shadow-brand-600/25">
+                        Iniciar Sesión
+                    </button>
+                </form>
+            </div>
+
+            <!-- Admin Dashboard (When Authenticated) -->
+            <div id="admin-dashboard" class="hidden space-y-8">
+                <!-- Admin Header Bar -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-slate-950 text-white p-6 sm:p-8 rounded-3xl gap-4 shadow-xl">
+                    <div>
+                        <span class="text-xs font-bold text-brand-400 uppercase tracking-widest">Panel de Control Exclusivo</span>
+                        <h2 class="text-2xl sm:text-3xl font-black mt-1">ConectaVe - Administración</h2>
+                    </div>
+                    <button onclick="adminLogout()" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold rounded-xl transition border border-slate-700 flex items-center gap-2">
+                        <i data-lucide="log-out" class="w-4 h-4"></i> Salir del Panel
+                    </button>
+                </div>
+
+                <!-- Real-Time Metrics Row -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                        <p class="text-xs font-semibold text-slate-500">Total Registro Empresas</p>
+                        <p class="text-3xl font-black text-slate-900 mt-1" id="stat-total">0</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                        <p class="text-xs font-semibold text-slate-500">Publicaciones Activas</p>
+                        <p class="text-3xl font-black text-emerald-600 mt-1" id="stat-active">0</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                        <p class="text-xs font-semibold text-slate-500">Publicaciones Pausadas</p>
+                        <p class="text-3xl font-black text-amber-600 mt-1" id="stat-paused">0</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm">
+                        <p class="text-xs font-semibold text-slate-500">Ingreso Mensual Est.</p>
+                        <p class="text-3xl font-black text-brand-600 mt-1" id="stat-revenue">$0</p>
+                    </div>
+                </div>
+
+                <!-- Add/Edit Company Form -->
+                <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-6 flex items-center gap-2" id="form-title">
+                        <i data-lucide="plus-circle" class="w-6 h-6 text-brand-600"></i> Registrar Cliente / Empresa
+                    </h3>
+
+                    <form id="company-form" onsubmit="handleSaveCompany(event)" class="space-y-6">
+                        <input type="hidden" id="editing-id" value="">
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Nombre Comercial *</label>
+                                <input type="text" id="form-name" placeholder="Ej. Tepuy Coffee Roasters" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium" required>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Rubro / Categoría *</label>
+                                <select id="form-category" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium" required>
+                                    <option value="Gastronomía">Gastronomía & Restaurantes</option>
+                                    <option value="Tecnología">Tecnología & Software</option>
+                                    <option value="Servicios">Servicios Profesionales</option>
+                                    <option value="Comercio">Comercio & Tiendas</option>
+                                    <option value="Salud">Salud & Bienestar</option>
+                                    <option value="Turismo">Turismo & Posadas</option>
+                                    <option value="Moda">Moda & Calzado</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Nivel de Plan (Cobro) *</label>
+                                <select id="form-tier" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium" required>
+                                    <option value="VIP">Nivel VIP Gold ($50/mes)</option>
+                                    <option value="Destacado">Nivel Destacado ($25/mes)</option>
+                                    <option value="Básico">Nivel Básico ($10/mes)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Estado de Publicación *</label>
+                                <select id="form-status" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium" required>
+                                    <option value="Activo">Activo (Visible en directorio)</option>
+                                    <option value="Pausado">Pausado (Oculto temporalmente)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Alcance / Cobertura *</label>
+                                <select id="form-scope" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium" required>
+                                    <option value="Nacional">Nacional (Todo el país)</option>
+                                    <option value="Estadal">Estadal (Específico)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Estado Base *</label>
+                                <select id="form-state" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium" required>
+                                    <!-- Dynamic States Options -->
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Ciudad / Zona</label>
+                                <input type="text" id="form-city" placeholder="Ej. Caracas, Valencia..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">WhatsApp / Teléfono *</label>
+                                <input type="text" id="form-phone" placeholder="Ej. +58 414 1234567" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium" required>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Usuario Instagram</label>
+                                <input type="text" id="form-instagram" placeholder="Ej. @empresa_ve" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Eslogan Corto</label>
+                                <input type="text" id="form-slogan" placeholder="Ej. Calidad garantizada" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">URL Logo de Empresa</label>
+                                <input type="url" id="form-logo" placeholder="https://ejemplo.com/logo.jpg" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">URL Portada / Banner</label>
+                                <input type="url" id="form-banner" placeholder="https://ejemplo.com/banner.jpg" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Descripción Detallada (Para la Mini Web) *</label>
+                            <textarea id="form-desc" rows="3" placeholder="Información amplia del negocio, servicios, experiencia..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium" required></textarea>
+                        </div>
+
+                        <!-- Mini Web Products Manager Sub-Section -->
+                        <div class="border-t border-slate-200 pt-5 space-y-3">
+                            <div class="flex justify-between items-center">
+                                <h4 class="text-sm font-extrabold text-slate-800 flex items-center gap-1.5">
+                                    <i data-lucide="shopping-bag" class="w-4 h-4 text-brand-600"></i> Catálogo de Productos/Servicios (Mini Web)
+                                </h4>
+                                <button type="button" onclick="addProductField()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition flex items-center gap-1">
+                                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Añadir Producto
+                                </button>
+                            </div>
+                            <div id="products-container" class="space-y-3">
+                                <!-- Dynamic Product Input Rows -->
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 pt-4">
+                            <button type="submit" class="px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-extrabold rounded-2xl text-xs transition shadow-md shadow-brand-600/20">
+                                Guardar Datos de Empresa
+                            </button>
+                            <button type="button" onclick="resetForm()" class="px-5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-2xl text-xs transition">
+                                Cancelar / Limpiar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Clients Management Table -->
+                <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden">
+                    <div class="px-6 py-5 border-b border-slate-200 flex justify-between items-center">
+                        <div>
+                            <h3 class="font-extrabold text-slate-900 text-base">Gestión de Publicaciones de Clientes</h3>
+                            <p class="text-xs text-slate-500">Pausa, activa o modifica el acceso de tus contratantes.</p>
+                        </div>
+                        <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 rounded-lg text-slate-600">Guardado Local</span>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-600">
+                            <thead class="bg-slate-50 text-slate-700 font-bold uppercase tracking-wider">
+                                <tr>
+                                    <th class="px-6 py-4">Empresa</th>
+                                    <th class="px-6 py-4">Rubro</th>
+                                    <th class="px-6 py-4">Plan</th>
+                                    <th class="px-6 py-4">Estado</th>
+                                    <th class="px-6 py-4">Ubicación</th>
+                                    <th class="px-6 py-4 text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-table-body" class="divide-y divide-slate-100 font-medium">
+                                <!-- Dynamic Rows -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-white border-t border-slate-800 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div>
+                <span class="text-2xl font-black tracking-tight">Conecta<span class="text-brand-500">Ve</span></span>
+                <p class="text-xs text-slate-400 mt-1">Plataforma & Directorio Digital de Empresas y Emprendedores de Venezuela.</p>
+            </div>
+            <div class="flex items-center gap-4 text-xs font-semibold text-slate-400">
+                <button onclick="navigateTo('directory')" class="hover:text-white transition">Directorio</button> •
+                <button onclick="navigateTo('pricing')" class="hover:text-white transition">Planes Comercialización</button> •
+                <button onclick="navigateTo('admin')" class="hover:text-white transition">Acceso Admin</button>
+            </div>
+            <div class="text-xs text-slate-500">
+                &copy; <span id="year"></span> ConectaVe. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL: CLIENT MINI WEB (MICROSITIO COMPLETO) -->
+    <div id="modal-miniweb" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden overflow-y-auto p-2 sm:p-4 md:p-6 flex justify-center items-start">
+        <div class="bg-white rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl border border-slate-100 my-auto animate-fadeIn relative">
+            
+            <!-- Close Button Floating -->
+            <button onclick="closeModal('modal-miniweb')" class="absolute top-4 right-4 z-20 w-10 h-10 bg-slate-950/60 hover:bg-slate-950 text-white rounded-full flex items-center justify-center transition backdrop-blur-sm">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <!-- Mini Web Header Banner -->
+            <div class="relative h-56 sm:h-72 bg-slate-900 overflow-hidden">
+                <img id="mw-banner" src="" alt="" class="w-full h-full object-cover opacity-80">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
+                
+                <!-- Badge and Location Overlay -->
+                <div class="absolute bottom-4 left-6 right-6 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 text-white">
+                    <div class="flex items-center gap-4">
+                        <img id="mw-logo" src="" alt="" class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border-4 border-white object-cover bg-white shadow-xl flex-shrink-0">
+                        <div>
+                            <div id="mw-badges" class="flex items-center gap-2 mb-1">
+                                <!-- Tier Badges -->
+                            </div>
+                            <h2 id="mw-title" class="text-2xl sm:text-4xl font-black leading-tight"></h2>
+                            <p id="mw-slogan" class="text-xs sm:text-sm text-slate-300 font-medium"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mini Web Body Info -->
+            <div class="p-6 sm:p-8 space-y-8">
+                <!-- Location & Quick Contact Bar -->
+                <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div class="space-y-1">
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Ubicación / Cobertura</span>
+                        <p id="mw-location" class="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-1.5">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-brand-600"></i>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-2 w-full sm:w-auto">
+                        <a id="mw-whatsapp" href="#" target="_blank" class="flex-1 sm:flex-initial px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 shadow-md shadow-emerald-600/20 transition">
+                            <i data-lucide="phone" class="w-4 h-4"></i> Contactar por WhatsApp
+                        </a>
+                        <a id="mw-instagram" href="#" target="_blank" class="px-3.5 py-2.5 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs rounded-xl flex items-center justify-center gap-2 transition">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <h3 class="text-xs font-black uppercase tracking-wider text-slate-400 mb-2">Sobre Nosotros</h3>
+                    <p id="mw-desc" class="text-sm text-slate-700 leading-relaxed font-normal"></p>
+                </div>
+
+                <!-- Product Showcase / Catalog -->
+                <div>
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-base font-black text-slate-900 flex items-center gap-2">
+                            <i data-lucide="shopping-bag" class="w-5 h-5 text-brand-600"></i> Catálogo de Productos & Servicios
+                        </h3>
+                        <span class="text-xs text-slate-400 font-semibold">Oferta Verificada</span>
+                    </div>
+
+                    <div id="mw-products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <!-- Dynamic Product Cards Injected Here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: HIRE PLAN -->
+    <div id="modal-hire" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-5 shadow-2xl border border-slate-100">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="text-lg font-black text-slate-900">Solicitar Publicación</h3>
+                <button onclick="closeModal('modal-hire')" class="text-slate-400 hover:text-slate-600">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <p class="text-xs text-slate-600 leading-relaxed">
+                Seleccionaste el <strong id="selected-plan-name" class="text-brand-600 font-black"></strong>. Completa tus datos e iniciaremos tu registro por WhatsApp.
+            </p>
+
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Nombre de tu Empresa / Marca *</label>
+                    <input type="text" id="hire-company" placeholder="Ej. Tu Marca C.A." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Estado de Venezuela *</label>
+                    <input type="text" id="hire-state" placeholder="Ej. Carabobo" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-brand-500 font-medium">
+                </div>
+            </div>
+
+            <button onclick="sendHireWhatsApp()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-2xl transition text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
+                <i data-lucide="send" class="w-4 h-4"></i> Enviar a WhatsApp Administrador
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APPLICATION CODE -->
+    <script>
+        // 24 STATES OF VENEZUELA
+        const VENEZUELA_STATES = [
+            "Amazonas", "Anzoátegui", "Apure", "Aragua", "Barinas", "Bolívar", 
+            "Carabobo", "Cojedes", "Delta Amacuro", "Distrito Capital", "Falcón", 
+            "Guárico", "Lara", "Mérida", "Miranda", "Monagas", "Nueva Esparta", 
+            "Portuguesa", "Sucre", "Táchira", "Trujillo", "La Guaira", "Yaracuy", "Zulia"
+        ];
+
+        // INITIAL PRE-LOADED DEMO DATA
+        const DEFAULT_COMPANIES = [
+            {
+                id: "c1",
+                name: "Avila Software House",
+                category: "Tecnología",
+                tier: "VIP",
+                status: "Activo",
+                scope: "Nacional",
+                state: "Distrito Capital",
+                city: "Caracas",
+                phone: "+584121234567",
+                instagram: "@avilatech_ve",
+                slogan: "Innovación y Software a Medida",
+                desc: "Somos una agencia especializada en desarrollo web, aplicaciones móviles, comercio electrónico e infraestructura en la nube para empresas a nivel nacional.",
+                logo: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&auto=format&fit=crop&q=80",
+                banner: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1000&auto=format&fit=crop&q=80",
+                products: [
+                    { name: "Desarrollo de Pagina Web", price: "$250", desc: "Sitio web corporativo administrable y adaptado a móviles.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&auto=format&fit=crop&q=80" },
+                    { name: "Sistema de Punto de Venta", price: "$180", desc: "Software de facturación e inventario para comercios.", img: "https://images.unsplash.com/photo-1556742049-0a67e06a454d?w=400&auto=format&fit=crop&q=80" }
+                ]
+            },
+            {
+                id: "c2",
+                name: "Posada Los Andes VIP",
+                category: "Turismo",
+                tier: "VIP",
+                status: "Activo",
+                scope: "Estadal",
+                state: "Mérida",
+                city: "Mérida",
+                phone: "+584147654321",
+                instagram: "@posadalandes_merida",
+                slogan: "Tu refugio confort en las montañas",
+                desc: "Alojamiento de lujo en Mérida. Habitaciones con vista a la Sierra Nevada, agua caliente, restaurante criollo e internacional y tours guiados.",
+                logo: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&auto=format&fit=crop&q=80",
+                banner: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1000&auto=format&fit=crop&q=80",
+                products: [
+                    { name: "Suite Matrimonial Vista Panorámica", price: "$60/noche", desc: "Incluye desayuno andino y acceso a áreas verdes.", img: "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400&auto=format&fit=crop&q=80" },
+                    { name: "Tour Guiado Páramo & Laguna", price: "$35/persona", desc: "Recorrido de día completo con transporte incluido.", img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&auto=format&fit=crop&q=80" }
+                ]
+            },
+            {
+                id: "c3",
+                name: "Café Gran Sabana Roasters",
+                category: "Gastronomía",
+                tier: "Destacado",
+                status: "Activo",
+                scope: "Nacional",
+                state: "Bolívar",
+                city: "Puerto Ordaz",
+                phone: "+584249876543",
+                instagram: "@gransabanacafe",
+                slogan: "Café de origen 100% venezolano",
+                desc: "Granos seleccionados y tostados con maestría. Envíos de café en grano o molido a cualquier ciudad de Venezuela.",
+                logo: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=300&auto=format&fit=crop&q=80",
+                banner: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=1000&auto=format&fit=crop&q=80",
+                products: [
+                    { name: "Bolsa Café Tostado 500g", price: "$8", desc: "Notas a chocolate oscuro y avellana.", img: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&auto=format&fit=crop&q=80" }
+                ]
+            },
+            {
+                id: "c4",
+                name: "Guaro Shoes & Style",
+                category: "Moda",
+                tier: "Básico",
+                status: "Activo",
+                scope: "Estadal",
+                state: "Lara",
+                city: "Barquisimeto",
+                phone: "+584125556677",
+                instagram: "@guarostyle_shoes",
+                slogan: "Calzado de cuero hecho en Lara",
+                desc: "Fabricación artesanal de calzado masculino y femenino. Diseños modernos con resistencia garantizada.",
+                logo: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=300&auto=format&fit=crop&q=80",
+                banner: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1000&auto=format&fit=crop&q=80",
+                products: [
+                    { name: "Mocasines Casual Cuero", price: "$32", desc: "Disponibles en color café y negro.", img: "https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=400&auto=format&fit=crop&q=80" }
+                ]
+            }
+        ];
+
+        // STATE MANAGERS
+        let companies = [];
+        let selectedCategory = "todas";
+        let isAdminLoggedIn = false;
+        const ADMIN_PIN = "1234";
+
+        window.onload = function() {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            loadCompanies();
+            populateStateDropdowns();
+            renderCategoryPills();
+            renderListings();
+            lucide.createIcons();
+        };
+
+        function loadCompanies() {
+            const stored = localStorage.getItem('conectave_v2_companies');
+            if (stored) {
+                try {
+                    companies = JSON.parse(stored);
+                } catch(e) {
+                    companies = DEFAULT_COMPANIES;
+                }
+            } else {
+                companies = DEFAULT_COMPANIES;
+                saveCompanies();
+            }
+        }
+
+        function saveCompanies() {
+            localStorage.setItem('conectave_v2_companies', JSON.stringify(companies));
+        }
+
+        function populateStateDropdowns() {
+            const filterState = document.getElementById('filter-state');
+            const formState = document.getElementById('form-state');
+
+            VENEZUELA_STATES.forEach(st => {
+                const opt1 = document.createElement('option');
+                opt1.value = st;
+                opt1.textContent = st;
+                filterState.appendChild(opt1);
+
+                const opt2 = document.createElement('option');
+                opt2.value = st;
+                opt2.textContent = st;
+                formState.appendChild(opt2);
+            });
+        }
+
+        // NAVIGATION TABS
+        function navigateTo(tab) {
+            document.getElementById('section-directory').classList.add('hidden');
+            document.getElementById('section-pricing').classList.add('hidden');
+            document.getElementById('section-admin').classList.add('hidden');
+
+            ['nav-directory', 'nav-pricing', 'nav-admin'].forEach(id => {
+                const el = document.getElementById(id);
+                el.className = "px-3.5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-slate-600 hover:text-brand-600 hover:bg-slate-100 flex items-center gap-2";
+            });
+
+            if (tab === 'directory') {
+                document.getElementById('section-directory').classList.remove('hidden');
+                document.getElementById('nav-directory').className = "px-3.5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-brand-700 bg-brand-50/80 flex items-center gap-2";
+            } else if (tab === 'pricing') {
+                document.getElementById('section-pricing').classList.remove('hidden');
+                document.getElementById('nav-pricing').className = "px-3.5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-brand-700 bg-brand-50/80 flex items-center gap-2";
+            } else if (tab === 'admin') {
+                document.getElementById('section-admin').classList.remove('hidden');
+                document.getElementById('nav-admin').className = "px-3.5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all text-brand-700 bg-brand-50/80 flex items-center gap-2";
+                if (isAdminLoggedIn) updateAdminDashboard();
+            }
+        }
+
+        // CATEGORY PILLS
+        function renderCategoryPills() {
+            const categories = ["Todas", "Gastronomía", "Tecnología", "Servicios", "Comercio", "Salud", "Turismo", "Moda"];
+            const container = document.getElementById('category-pills');
+            container.innerHTML = "";
+
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                const isSelected = selectedCategory.toLowerCase() === cat.toLowerCase();
+                btn.className = `px-3 py-1 rounded-xl font-bold text-xs whitespace-nowrap transition ${
+                    isSelected ? 'bg-brand-600 text-white shadow-sm' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`;
+                btn.textContent = cat;
+                btn.onclick = () => {
+                    selectedCategory = cat.toLowerCase();
+                    renderCategoryPills();
+                    renderListings();
+                };
+                container.appendChild(btn);
+            });
+        }
+
+        // RENDER DIRECTORY LISTINGS (ONLY ACTIVE ITEMS)
+        function renderListings() {
+            const grid = document.getElementById('listings-grid');
+            const empty = document.getElementById('empty-state');
+            grid.innerHTML = "";
+
+            const keyword = document.getElementById('filter-keyword').value.toLowerCase().trim();
+            const scope = document.getElementById('filter-scope').value;
+            const state = document.getElementById('filter-state').value;
+            const tier = document.getElementById('filter-tier').value;
+
+            let activeCompanies = companies.filter(c => c.status === 'Activo');
+
+            let filtered = activeCompanies.filter(item => {
+                const matchKeyword = !keyword || item.name.toLowerCase().includes(keyword) || item.desc.toLowerCase().includes(keyword) || item.category.toLowerCase().includes(keyword);
+                const matchScope = scope === 'todos' || item.scope === scope;
+                const matchState = state === 'todos' || item.state === state || item.scope === 'Nacional';
+                const matchCategory = selectedCategory === 'todas' || item.category.toLowerCase() === selectedCategory;
+                const matchTier = tier === 'todos' || item.tier === tier;
+
+                return matchKeyword && matchScope && matchState && matchCategory && matchTier;
+            });
+
+            // Priority: VIP -> Destacado -> Básico
+            const tierPriority = { "VIP": 1, "Destacado": 2, "Básico": 3 };
+            filtered.sort((a, b) => (tierPriority[a.tier] || 99) - (tierPriority[b.tier] || 99));
+
+            document.getElementById('results-count').textContent = `Mostrando ${filtered.length} empresa(s) activa(s)`;
+
+            if (filtered.length === 0) {
+                empty.classList.remove('hidden');
+                return;
+            } else {
+                empty.classList.add('hidden');
+            }
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                const isVip = item.tier === 'VIP';
+                const isDestacado = item.tier === 'Destacado';
+
+                card.className = `bg-white rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between ${
+                    isVip ? 'vip-glow bg-gradient-to-b from-brand-50/20 to-white' : isDestacado ? 'border border-brand-300 shadow-md' : 'border border-slate-200/80 shadow-sm'
+                }`;
+
+                card.innerHTML = `
+                    <div>
+                        <!-- Cover Image & Badges -->
+                        <div class="relative h-44 bg-slate-900 overflow-hidden cursor-pointer" onclick="openMiniWeb('${item.id}')">
+                            <img src="${item.banner || item.logo || 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&auto=format&fit=crop&q=80'}" alt="${item.name}" class="w-full h-full object-cover opacity-90 hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                            
+                            <div class="absolute top-3 right-3 flex flex-col items-end gap-1">
+                                ${isVip ? `<span class="px-2.5 py-1 bg-amber-400 text-amber-950 font-black text-[10px] rounded-full shadow-md uppercase tracking-wider flex items-center gap-1"><i data-lucide="crown" class="w-3 h-3"></i> VIP Gold</span>` : ''}
+                                ${isDestacado ? `<span class="px-2.5 py-1 bg-brand-600 text-white font-bold text-[10px] rounded-full shadow-md flex items-center gap-1"><i data-lucide="star" class="w-3 h-3"></i> Destacado</span>` : ''}
+                            </div>
+
+                            <span class="absolute bottom-3 left-3 px-2.5 py-1 bg-slate-950/80 backdrop-blur-sm text-white font-bold text-[10px] rounded-lg">
+                                ${item.category}
+                            </span>
+                        </div>
+
+                        <!-- Info Header -->
+                        <div class="p-5 space-y-3">
+                            <div class="flex items-start gap-3">
+                                <img src="${item.logo || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=150&auto=format&fit=crop&q=80'}" class="w-12 h-12 rounded-xl object-cover border-2 border-white shadow-md flex-shrink-0">
+                                <div>
+                                    <h3 onclick="openMiniWeb('${item.id}')" class="text-base font-black text-slate-900 leading-snug cursor-pointer hover:text-brand-600 transition">${item.name}</h3>
+                                    <p class="text-xs text-slate-500 font-medium flex items-center gap-1 mt-0.5">
+                                        <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-600"></i>
+                                        ${item.scope === 'Nacional' ? '<strong class="text-brand-700">Cobertura Nacional</strong>' : `${item.city ? item.city + ', ' : ''}${item.state}`}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">${item.desc}</p>
+                        </div>
+                    </div>
+
+                    <!-- Footer Action -->
+                    <div class="px-5 pb-5 pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <button onclick="openMiniWeb('${item.id}')" class="text-xs font-extrabold text-brand-700 hover:text-brand-800 flex items-center gap-1">
+                            Ver Mini Web <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <a href="https://wa.me/${item.phone.replace(/[^0-9]/g, '')}?text=Hola,%20los%20encontr%C3%A9%20en%20ConectaVe" target="_blank" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 shadow-sm transition">
+                            <i data-lucide="phone" class="w-3.5 h-3.5"></i> WhatsApp
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            lucide.createIcons();
+        }
+
+        function resetFilters() {
+            document.getElementById('filter-keyword').value = "";
+            document.getElementById('filter-scope').value = "todos";
+            document.getElementById('filter-state').value = "todos";
+            document.getElementById('filter-tier').value = "todos";
+            selectedCategory = "todas";
+            renderCategoryPills();
+            renderListings();
+        }
+
+        // OPEN MINI WEB MODAL FOR CLIENT
+        function openMiniWeb(id) {
+            const item = companies.find(c => c.id === id);
+            if (!item) return;
+
+            document.getElementById('mw-banner').src = item.banner || item.logo || 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1000&auto=format&fit=crop&q=80';
+            document.getElementById('mw-logo').src = item.logo || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=150&auto=format&fit=crop&q=80';
+            document.getElementById('mw-title').textContent = item.name;
+            document.getElementById('mw-slogan').textContent = item.slogan || item.category;
+            document.getElementById('mw-location').innerHTML = `<i data-lucide="map-pin" class="w-4 h-4 text-brand-600"></i> ${item.scope === 'Nacional' ? 'Cobertura en Toda Venezuela' : `${item.state}${item.city ? ' - ' + item.city : ''}`}`;
+            document.getElementById('mw-desc').textContent = item.desc;
+
+            // Badges
+            const badges = document.getElementById('mw-badges');
+            badges.innerHTML = `
+                <span class="px-2.5 py-1 ${item.tier === 'VIP' ? 'bg-amber-400 text-amber-950 font-black' : 'bg-brand-600 text-white font-bold'} text-[10px] rounded-md uppercase tracking-wider">
+                    Plan ${item.tier}
+                </span>
+                <span class="px-2.5 py-1 bg-white/20 text-white font-semibold text-[10px] rounded-md backdrop-blur-sm">
+                    ${item.category}
+                </span>
+            `;
+
+            // WhatsApp link
+            document.getElementById('mw-whatsapp').href = `https://wa.me/${item.phone.replace(/[^0-9]/g, '')}?text=Hola%20${encodeURIComponent(item.name)},%20los%20encontr%C3%A9%20en%20su%20Mini%20Web%20de%20ConectaVe`;
+            document.getElementById('mw-instagram').href = item.instagram ? `https://instagram.com/${item.instagram.replace('@', '')}` : '#';
+
+            // Products Catalog
+            const productsGrid = document.getElementById('mw-products-grid');
+            productsGrid.innerHTML = "";
+
+            if (item.products && item.products.length > 0) {
+                item.products.forEach(p => {
+                    const pCard = document.createElement('div');
+                    pCard.className = "bg-white border border-slate-100 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between";
+                    pCard.innerHTML = `
+                        <div>
+                            <div class="h-28 bg-slate-100 overflow-hidden">
+                                <img src="${p.img || 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&auto=format&fit=crop&q=80'}" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-3.5">
+                                <div class="flex justify-between items-start gap-1">
+                                    <h4 class="font-extrabold text-xs text-slate-900">${p.name}</h4>
+                                    <span class="px-2 py-0.5 bg-brand-50 text-brand-700 font-black text-xs rounded-md">${p.price || 'Consultar'}</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">${p.desc || ''}</p>
+                            </div>
+                        </div>
+                        <div class="p-3 pt-0">
+                            <a href="https://wa.me/${item.phone.replace(/[^0-9]/g, '')}?text=Hola,%20me%20interesa%20el%20producto:%20${encodeURIComponent(p.name)}" target="_blank" class="w-full py-1.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-[10px] rounded-lg flex items-center justify-center gap-1 transition">
+                                Pedir información
+                            </a>
+                        </div>
+                    `;
+                    productsGrid.appendChild(pCard);
+                });
+            } else {
+                productsGrid.innerHTML = `<p class="text-xs text-slate-400 col-span-3 italic">No hay productos individuales listados en esta Mini Web.</p>`;
+            }
+
+            document.getElementById('modal-miniweb').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        // HIRE PLAN MODAL
+        let currentPlanHiring = "";
+        function openHireModal(planName) {
+            currentPlanHiring = planName;
+            document.getElementById('selected-plan-name').textContent = planName;
+            document.getElementById('modal-hire').classList.remove('hidden');
+        }
+
+        function sendHireWhatsApp() {
+            const company = document.getElementById('hire-company').value.trim();
+            const state = document.getElementById('hire-state').value.trim();
+
+            if (!company) {
+                alert("Ingresa el nombre de tu marca.");
+                return;
+            }
+
+            const text = `Hola Administrador ConectaVe!%0ADeseo contratar el plan: *${currentPlanHiring}*%0A*Empresa:* ${company}%0A*Estado:* ${state || 'Venezuela'}`;
+            window.open(`https://wa.me/584120000000?text=${text}`, '_blank');
+            closeModal('modal-hire');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // ADMIN PANEL AUTH & DASHBOARD
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const pin = document.getElementById('admin-pin-input').value;
+            if (pin === ADMIN_PIN) {
+                isAdminLoggedIn = true;
+                document.getElementById('admin-login-card').classList.add('hidden');
+                document.getElementById('admin-dashboard').classList.remove('hidden');
+                updateAdminDashboard();
+            } else {
+                alert("PIN incorrecto. Ingresa el PIN 1234 para probar.");
+            }
+        }
+
+        function adminLogout() {
+            isAdminLoggedIn = false;
+            document.getElementById('admin-login-card').classList.remove('hidden');
+            document.getElementById('admin-dashboard').classList.add('hidden');
+            document.getElementById('admin-pin-input').value = "";
+        }
+
+        function updateAdminDashboard() {
+            document.getElementById('stat-total').textContent = companies.length;
+            const activeCount = companies.filter(c => c.status === 'Activo').length;
+            const pausedCount = companies.filter(c => c.status === 'Pausado').length;
+            
+            document.getElementById('stat-active').textContent = activeCount;
+            document.getElementById('stat-paused').textContent = pausedCount;
+
+            const vipCount = companies.filter(c => c.tier === 'VIP' && c.status === 'Activo').length;
+            const destCount = companies.filter(c => c.tier === 'Destacado' && c.status === 'Activo').length;
+            const basCount = companies.filter(c => c.tier === 'Básico' && c.status === 'Activo').length;
+
+            const revenue = (vipCount * 50) + (destCount * 25) + (basCount * 10);
+            document.getElementById('stat-revenue').textContent = `$${revenue}`;
+
+            // Render Table
+            const body = document.getElementById('admin-table-body');
+            body.innerHTML = "";
+
+            companies.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition";
+                tr.innerHTML = `
+                    <td class="px-6 py-4 font-extrabold text-slate-900">${item.name}</td>
+                    <td class="px-6 py-4">${item.category}</td>
+                    <td class="px-6 py-4">
+                        <span class="px-2.5 py-1 text-[10px] font-black rounded-md ${
+                            item.tier === 'VIP' ? 'bg-amber-100 text-amber-900' :
+                            item.tier === 'Destacado' ? 'bg-emerald-100 text-emerald-900' : 'bg-slate-100 text-slate-700'
+                        }">${item.tier}</span>
+                    </td>
+                    <td class="px-6 py-4">
+                        <button onclick="toggleStatus('${item.id}')" class="px-2.5 py-1 rounded-full text-[10px] font-bold flex items-center gap-1 transition ${
+                            item.status === 'Activo' ? 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200' : 'bg-amber-100 text-amber-800 hover:bg-amber-200'
+                        }">
+                            <i data-lucide="${item.status === 'Activo' ? 'check-circle' : 'pause-circle'}" class="w-3 h-3"></i>
+                            ${item.status}
+                        </button>
+                    </td>
+                    <td class="px-6 py-4">${item.scope} (${item.state})</td>
+                    <td class="px-6 py-4 text-right space-x-2">
+                        <button onclick="editCompany('${item.id}')" class="text-brand-600 hover:text-brand-800 font-bold text-xs">Editar</button>
+                        <button onclick="deleteCompany('${item.id}')" class="text-red-600 hover:text-red-800 font-bold text-xs">Eliminar</button>
+                    </td>
+                `;
+                body.appendChild(tr);
+            });
+
+            lucide.createIcons();
+        }
+
+        // TOGGLE STATUS PAUSE / ACTIVE
+        function toggleStatus(id) {
+            const index = companies.findIndex(c => c.id === id);
+            if (index !== -1) {
+                companies[index].status = companies[index].status === 'Activo' ? 'Pausado' : 'Activo';
+                saveCompanies();
+                updateAdminDashboard();
+                renderListings();
+            }
+        }
+
+        // DYNAMIC PRODUCTS IN FORM
+        function addProductField(name = '', price = '', desc = '', img = '') {
+            const container = document.getElementById('products-container');
+            const div = document.createElement('div');
+            div.className = "p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2 product-row";
+            div.innerHTML = `
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    <input type="text" placeholder="Nombre Producto" value="${name}" class="p-2 text-xs bg-white border border-slate-200 rounded-lg p-name" required>
+                    <input type="text" placeholder="Precio ($)" value="${price}" class="p-2 text-xs bg-white border border-slate-200 rounded-lg p-price">
+                    <input type="url" placeholder="URL Foto Producto" value="${img}" class="p-2 text-xs bg-white border border-slate-200 rounded-lg p-img">
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" placeholder="Descripción corta del producto..." value="${desc}" class="w-full p-2 text-xs bg-white border border-slate-200 rounded-lg p-desc">
+                    <button type="button" onclick="this.parentElement.parentElement.remove()" class="p-2 text-red-500 hover:text-red-700 text-xs font-bold">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            `;
+            container.appendChild(div);
+            lucide.createIcons();
+        }
+
+        // SAVE COMPANY LOGIC
+        function handleSaveCompany(e) {
+            e.preventDefault();
+            const editId = document.getElementById('editing-id').value;
+
+            // Collect Product Rows
+            const productRows = document.querySelectorAll('.product-row');
+            const productsList = [];
+            productRows.forEach(row => {
+                const name = row.querySelector('.p-name').value.trim();
+                const price = row.querySelector('.p-price').value.trim();
+                const img = row.querySelector('.p-img').value.trim();
+                const desc = row.querySelector('.p-desc').value.trim();
+                if (name) {
+                    productsList.push({ name, price, img, desc });
+                }
+            });
+
+            const companyData = {
+                id: editId || 'c_' + Date.now(),
+                name: document.getElementById('form-name').value.trim(),
+                category: document.getElementById('form-category').value,
+                tier: document.getElementById('form-tier').value,
+                status: document.getElementById('form-status').value,
+                scope: document.getElementById('form-scope').value,
+                state: document.getElementById('form-state').value,
+                city: document.getElementById('form-city').value.trim(),
+                phone: document.getElementById('form-phone').value.trim(),
+                instagram: document.getElementById('form-instagram').value.trim(),
+                slogan: document.getElementById('form-slogan').value.trim(),
+                logo: document.getElementById('form-logo').value.trim(),
+                banner: document.getElementById('form-banner').value.trim(),
+                desc: document.getElementById('form-desc').value.trim(),
+                products: productsList
+            };
+
+            if (editId) {
+                const index = companies.findIndex(c => c.id === editId);
+                if (index !== -1) companies[index] = companyData;
+            } else {
+                companies.push(companyData);
+            }
+
+            saveCompanies();
+            resetForm();
+            updateAdminDashboard();
+            renderListings();
+            alert(editId ? "Cliente actualizado correctamente." : "Nuevo cliente registrado exitosamente.");
+        }
+
+        function editCompany(id) {
+            const item = companies.find(c => c.id === id);
+            if (!item) return;
+
+            document.getElementById('editing-id').value = item.id;
+            document.getElementById('form-name').value = item.name;
+            document.getElementById('form-category').value = item.category;
+            document.getElementById('form-tier').value = item.tier;
+            document.getElementById('form-status').value = item.status;
+            document.getElementById('form-scope').value = item.scope;
+            document.getElementById('form-state').value = item.state;
+            document.getElementById('form-city').value = item.city || '';
+            document.getElementById('form-phone').value = item.phone;
+            document.getElementById('form-instagram').value = item.instagram || '';
+            document.getElementById('form-slogan').value = item.slogan || '';
+            document.getElementById('form-logo').value = item.logo || '';
+            document.getElementById('form-banner').value = item.banner || '';
+            document.getElementById('form-desc').value = item.desc;
+
+            // Load products
+            document.getElementById('products-container').innerHTML = "";
+            if (item.products && item.products.length > 0) {
+                item.products.forEach(p => addProductField(p.name, p.price, p.desc, p.img));
+            }
+
+            document.getElementById('form-title').innerHTML = `<i data-lucide="edit" class="w-6 h-6 text-amber-500"></i> Editando: ${item.name}`;
+            lucide.createIcons();
+        }
+
+        function deleteCompany(id) {
+            if (confirm("¿Estás seguro de eliminar este cliente? Esta acción no se puede deshacer.")) {
+                companies = companies.filter(c => c.id !== id);
+                saveCompanies();
+                updateAdminDashboard();
+                renderListings();
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('company-form').reset();
+            document.getElementById('editing-id').value = "";
+            document.getElementById('products-container').innerHTML = "";
+            document.getElementById('form-title').innerHTML = `<i data-lucide="plus-circle" class="w-6 h-6 text-brand-600"></i> Registrar Cliente / Empresa`;
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
+```
