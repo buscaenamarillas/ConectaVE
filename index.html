@@ -1,0 +1,289 @@
+```html
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-emerald-50/50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConectaVE - Directorio Nacional y Estadal de Empresas</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#064E3B',       /* Verde bosque profundo */
+                            emerald: '#059669',    /* Esmeralda vibrante */
+                            mint: '#10B981',       /* Verde menta principal */
+                            lightMint: '#34D399',  /* Menta claro acento */
+                            soft: '#ECFDF5',       /* Fondo verde pastel ultra suave */
+                            accent: '#D1FAE5'      /* Borde/destaque menta pastel */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-header {
+            background: rgba(6, 78, 59, 0.92);
+            backdrop-filter: blur(12px);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+        }
+        .badge-vip {
+            background: linear-gradient(135deg, #10B981 0%, #047857 100%);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+        .badge-pro {
+            background: linear-gradient(135deg, #34D399 0%, #059669 100%);
+            color: #064E3B;
+        }
+        .badge-basico {
+            background: #E2E8F0;
+            color: #475569;
+        }
+        .tab-btn.active {
+            border-bottom: 3px solid #10B981;
+            color: #059669;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen text-slate-800 bg-gradient-to-b from-emerald-50/60 via-slate-50 to-emerald-50/30 antialiased">
+
+    <!-- NAVBAR -->
+    <header class="glass-header text-white sticky top-0 z-50 border-b border-emerald-800/40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('public')">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-mint to-brand-emerald flex items-center justify-center text-white font-black text-xl shadow-md shadow-emerald-900/20 border border-emerald-300/30">
+                    <i class="fa-solid fa-[#10B981] fa-leaf"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-emerald-100 to-emerald-300">Conecta<span class="text-emerald-300">VE</span></span>
+                    <span class="block text-[10px] text-emerald-200 tracking-wider font-semibold uppercase -mt-1">Directorio Nacional</span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-6 text-sm font-semibold">
+                <button onclick="switchTab('public')" class="text-white hover:text-emerald-300 transition flex items-center gap-2">
+                    <i class="fa-solid fa-compass text-emerald-300"></i> Explorar
+                </button>
+                <button onclick="scrollToSection('planes')" class="text-emerald-100/80 hover:text-emerald-300 transition flex items-center gap-2">
+                    <i class="fa-solid fa-tags text-emerald-300"></i> Planes
+                </button>
+                <button onclick="openAdminModal()" class="bg-emerald-700/80 hover:bg-brand-mint text-white px-4 py-2 rounded-2xl transition font-bold shadow-sm border border-emerald-500/30 flex items-center gap-2">
+                    <i class="fa-solid fa-user-gear"></i> Panel Admin
+                </button>
+            </nav>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden flex items-center gap-2">
+                <button onclick="openAdminModal()" class="bg-emerald-800/80 text-xs px-3 py-2 rounded-xl font-bold text-emerald-200 border border-emerald-700">
+                    <i class="fa-solid fa-lock"></i> Admin
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-brand-dark text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-emerald-500/30">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toast-message" class="text-sm font-medium">Notificación</span>
+    </div>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-grow">
+
+        <!-- VISTA PÚBLICA -->
+        <section id="public-view" class="block">
+            
+            <!-- HERO SECTION WITH SEARCH -->
+            <div class="relative bg-gradient-to-b from-brand-dark via-emerald-950 to-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden border-b border-emerald-900/60">
+                <!-- Background decoration elements -->
+                <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:20px_20px]"></div>
+                <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-mint rounded-full filter blur-[128px] opacity-25"></div>
+                <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-brand-emerald rounded-full filter blur-[128px] opacity-30"></div>
+
+                <div class="relative max-w-5xl mx-auto text-center">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 mb-4 shadow-sm backdrop-blur-md">
+                        <i class="fa-solid fa-seedling text-emerald-400"></i> Red Nacional de Emprendedores y Empresas
+                    </span>
+                    <h1 class="text-3xl sm:text-5xl font-black tracking-tight mb-4 leading-tight">
+                        Descubre Comercios y Servicios en Toda Venezuela
+                    </h1>
+                    <p class="text-emerald-100/80 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-normal">
+                        Conecta directamente con proveedores verificados por estado o categoría en una experiencia moderna y fluida.
+                    </p>
+
+                    <!-- Filter / Search Box -->
+                    <div class="bg-white/10 backdrop-blur-xl p-3 sm:p-4 rounded-3xl shadow-2xl border border-white/20 max-w-4xl mx-auto">
+                        <div class="grid grid-cols-1 sm:grid-cols-12 gap-3">
+                            <!-- Search by Name -->
+                            <div class="sm:col-span-5 relative">
+                                <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-emerald-300/70"></i>
+                                <input type="text" id="search-input" placeholder="¿Qué buscas? (Ej. Salud, Software, Café)" 
+                                       class="w-full pl-11 pr-4 py-2.5 bg-slate-900/80 border border-emerald-800/60 rounded-2xl text-white placeholder-emerald-200/50 focus:outline-none focus:ring-2 focus:ring-brand-mint text-sm font-medium">
+                            </div>
+
+                            <!-- Filter by State -->
+                            <div class="sm:col-span-4 relative">
+                                <i class="fa-solid fa-location-dot absolute left-4 top-3.5 text-emerald-300/70"></i>
+                                <select id="state-filter" class="w-full pl-11 pr-8 py-2.5 bg-slate-900/80 border border-emerald-800/60 rounded-2xl text-white focus:outline-none focus:ring-2 focus:ring-brand-mint text-sm font-medium appearance-none">
+                                    <option value="">Todos los Estados</option>
+                                    <!-- Populated dynamically -->
+                                </select>
+                                <i class="fa-solid fa-chevron-down absolute right-4 top-3.5 text-emerald-300/70 text-xs pointer-events-none"></i>
+                            </div>
+
+                            <!-- Filter by Category -->
+                            <div class="sm:col-span-3 relative">
+                                <select id="category-filter" class="w-full px-4 py-2.5 bg-slate-900/80 border border-emerald-800/60 rounded-2xl text-white focus:outline-none focus:ring-2 focus:ring-brand-mint text-sm font-medium appearance-none">
+                                    <option value="">Todas las Categorías</option>
+                                    <!-- Populated dynamically -->
+                                </select>
+                                <i class="fa-solid fa-chevron-down absolute right-4 top-3.5 text-emerald-300/70 text-xs pointer-events-none"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIP / FEATURED BUSINESSES SECTION -->
+            <div id="vip-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-100 text-brand-emerald flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-star text-emerald-600"></i>
+                        </div>
+                        <h2 class="text-xl font-extrabold text-slate-900">Empresas Destacadas VIP</h2>
+                    </div>
+                    <span class="text-xs text-emerald-700 font-bold bg-emerald-100/80 px-3 py-1 rounded-full">Marcas Verificadas</span>
+                </div>
+                
+                <div id="vip-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- ALL LISTINGS DIRECTORY -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-emerald-100">
+                    <div>
+                        <h2 class="text-2xl font-black text-slate-900">Directorio General</h2>
+                        <p class="text-slate-500 text-xs sm:text-sm mt-0.5">Haz clic en cualquier tarjeta para abrir su Mini Página Web</p>
+                    </div>
+                    <div class="text-xs font-bold text-emerald-800 bg-brand-soft border border-brand-accent px-3.5 py-1.5 rounded-xl self-start sm:self-auto shadow-sm">
+                        Total encontrados: <span id="results-count" class="text-brand-emerald font-extrabold">0</span>
+                    </div>
+                </div>
+
+                <!-- Directory Grid -->
+                <div id="directory-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="hidden text-center py-16 bg-white rounded-3xl border border-emerald-100 shadow-sm">
+                    <div class="w-16 h-16 bg-emerald-50 rounded-2xl text-emerald-400 flex items-center justify-center mx-auto mb-3 text-2xl">
+                        <i class="fa-solid fa-building-circle-xmark"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">No se encontraron comercios</h3>
+                    <p class="text-slate-500 text-xs max-w-md mx-auto mt-1">Ajusta los filtros de estado o categoría para descubrir más opciones.</p>
+                </div>
+            </div>
+
+            <!-- PRICING / PLANES SECTION -->
+            <div id="planes" class="bg-gradient-to-b from-emerald-50/40 via-emerald-100/30 to-slate-100 py-16 border-t border-emerald-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <span class="text-brand-emerald font-extrabold text-xs uppercase tracking-widest bg-emerald-100 px-3.5 py-1 rounded-full border border-emerald-200">Suscripciones</span>
+                        <h2 class="text-3xl font-black text-slate-900 mt-3">Planes de Publicación</h2>
+                        <p class="text-slate-600 text-sm mt-2">Publica tu empresa o emprendimiento en nuestro directorio nacional con mini página web exclusiva.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        
+                        <!-- PLAN BÁSICO -->
+                        <div class="bg-white rounded-3xl p-6 shadow-sm border border-slate-200/80 flex flex-col justify-between hover:shadow-xl transition duration-300">
+                            <div>
+                                <span class="px-3 py-1 text-xs font-bold rounded-full bg-slate-100 text-slate-700 uppercase">Plan Estadal</span>
+                                <h3 class="text-xl font-extrabold text-slate-900 mt-3">Básico</h3>
+                                <p class="text-xs text-slate-500 mt-1">Para presencia local en 1 estado</p>
+                                <div class="my-6">
+                                    <span class="text-3xl font-black text-slate-900">$10</span>
+                                    <span class="text-slate-500 text-xs">/ mes</span>
+                                </div>
+                                <ul class="space-y-3 text-xs font-medium text-slate-600 mb-6">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Presencia en 1 Estado</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Mini Web con Reseña & Contacto</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Botón directo a WhatsApp</li>
+                                    <li class="flex items-center gap-2 text-slate-400"><i class="fa-solid fa-xmark"></i> Sin posición prioritaria</li>
+                                </ul>
+                            </div>
+                            <button onclick="contactPlan('Básico')" class="w-full py-3 rounded-2xl border-2 border-brand-emerald text-brand-emerald font-bold text-xs hover:bg-brand-emerald hover:text-white transition">Contratar Básico</button>
+                        </div>
+
+                        <!-- PLAN PRO -->
+                        <div class="bg-white rounded-3xl p-6 shadow-xl border-2 border-brand-mint relative flex flex-col justify-between transform md:-translate-y-2">
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-mint text-white px-3.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider shadow-md">Más Elegido</div>
+                            <div>
+                                <span class="px-3 py-1 text-xs font-bold rounded-full bg-emerald-100 text-brand-dark uppercase">Plan Nacional</span>
+                                <h3 class="text-xl font-extrabold text-slate-900 mt-3">Pro Nacional</h3>
+                                <p class="text-xs text-slate-500 mt-1">Para empresas con alcance amplio</p>
+                                <div class="my-6">
+                                    <span class="text-3xl font-black text-slate-900">$25</span>
+                                    <span class="text-slate-500 text-xs">/ mes</span>
+                                </div>
+                                <ul class="space-y-3 text-xs font-medium text-slate-600 mb-6">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Cobertura en toda Venezuela</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Mini Web + Catálogo de Servicios</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Insignia Menta de Verificación</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Formulario de Cotización Directa</li>
+                                </ul>
+                            </div>
+                            <button onclick="contactPlan('Pro')" class="w-full py-3 rounded-2xl bg-brand-mint text-white font-extrabold text-xs hover:bg-brand-emerald transition shadow-md">Contratar Pro</button>
+                        </div>
+
+                        <!-- PLAN VIP -->
+                        <div class="bg-gradient-to-b from-brand-dark to-slate-900 text-white rounded-3xl p-6 shadow-xl border border-emerald-500/40 flex flex-col justify-between hover:shadow-2xl transition">
+                            <div>
+                                <span class="px-3 py-1 text-xs font-bold rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 uppercase">Destacado VIP</span>
+                                <h3 class="text-xl font-extrabold text-white mt-3">VIP Portada</h3>
+                                <p class="text-xs text-emerald-200/70 mt-1">Máxima visibilidad e impacto</p>
+                                <div class="my-6">
+                                    <span class="text-3xl font-black text-white">$45</span>
+                                    <span class="text-emerald-200/60 text-xs">/ mes</span>
+                                </div>
+                                <ul class="space-y-3 text-xs font-medium text-emerald-100/90 mb-6">
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Aparece en Portada Principal VIP</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Mini Web Completa e Ilimitada</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Distintivo Esmeralda Premium</li>
+                                    <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Soporte y actualización prioritaria</li>
+                                </ul>
+                            </div>
+                            <button onclick="contactPlan('VIP')" class="w-full py-3 rounded-2xl bg-gradient-to-r from-emerald-400 to-brand-mint text-slate-950 font-black text-xs hover:brightness-110 transition shadow-md">Contratar VIP</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA PANEL DE ADMINISTRACIÓN (PRIVADA) -->
+        <section id="admin-view" class="hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 bg-gradient-to-r from-brand-dark to-slate-900 text-white p-6 rounded-3xl shadow-xl border border-emerald-800/50">
+                <div>
+     
